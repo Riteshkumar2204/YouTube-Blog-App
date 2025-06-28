@@ -2,6 +2,7 @@
 import React from "react";
 import { useAuth } from "../context/AuthProvider";
 
+
 function MyProfile() {
   const { profile } = useAuth();
   console.log(profile?.user);
