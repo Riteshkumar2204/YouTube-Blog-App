@@ -1,9 +1,7 @@
-
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-import { BACKEND_URL } from "../utils/utils.js";
 
 function MyBlogs() {
   const [myBlogs, setMyBlogs] = useState([]);
@@ -11,7 +9,7 @@ function MyBlogs() {
     const fetchMyBlogs = async () => {
       try {
         const { data } = await axios.get(
-          `${BACKEND_URL}/blogs/my-blog`,
+          "http://localhost:4001/api/blogs/my-blog",
           { withCredentials: true }
         );
         console.log(data);
@@ -25,7 +23,7 @@ function MyBlogs() {
 
   const handleDelete = async (id) => {
     await axios
-      .delete(`${BACKEND_URL}/blogs/delete/${id}`, {
+      .delete(`http://localhost:4001/api/blogs/delete/${id}`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -42,13 +40,13 @@ function MyBlogs() {
         <div className="grid gap-6 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 md:ml-20">
           {myBlogs && myBlogs.length > 0 ? (
             myBlogs.map((element) => (
-              <Link to={`/blog/${element._id}`}
+              <div
                 className="bg-white shadow-lg rounded-lg overflow-hidden"
                 key={element._id}
               >
                 {element?.blogImage && (
                   <img
-                    src={element?.blogImage?.url}
+                    src={element?.blogImage.url}
                     alt="blogImg"
                     className="w-full h-48 object-cover"
                   />
@@ -75,7 +73,7 @@ function MyBlogs() {
                     </button>
                   </div>
                 </div>
-              </Link>
+              </div>
             ))
           ) : (
             <p className="text-center text-gray-500">

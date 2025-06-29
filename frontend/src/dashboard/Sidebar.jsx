@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +5,6 @@ import axios from "axios";
 import { CiMenuBurger } from "react-icons/ci";
 import { BiSolidLeftArrowAlt } from "react-icons/bi";
 import toast from "react-hot-toast";
-import { BACKEND_URL } from "../utils/utils.js";
 
 function Sidebar({ setComponent }) {
   const { profile, setIsAuthenticated } = useAuth();
@@ -26,7 +24,7 @@ function Sidebar({ setComponent }) {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `${BACKEND_URL}/users/logout`,
+        "http://localhost:4001/api/users/logout",
         { withCredentials: true }
       );
       toast.success(data.message);

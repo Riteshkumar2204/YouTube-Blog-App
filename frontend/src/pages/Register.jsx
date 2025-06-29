@@ -1,10 +1,8 @@
-
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
-import { BACKEND_URL } from "../utils/utils.js";
 
 function Register() {
   const { isAuthenticated, setIsAuthenticated, setProfile } = useAuth();
@@ -43,7 +41,7 @@ function Register() {
     formData.append("photo", photo);
     try {
       const { data } = await axios.post(
-        `${BACKEND_URL}/users/register`,
+        "http://localhost:4001/api/users/register",
         formData,
         {
           withCredentials: true,

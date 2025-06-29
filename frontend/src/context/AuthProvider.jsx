@@ -1,7 +1,6 @@
-
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { BACKEND_URL } from "../utils/utils.js";
+
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -12,11 +11,12 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        let token = localStorage.getItem("jwt"); 
+        // token should be let type variable because its value will change in every login. (in backend also)
+        let token = localStorage.getItem("jwt"); // Retrieve the token directly from the localStorage (Go to login.jsx)
         console.log(token);
         if (token) {
           const { data } = await axios.get(
-            `${BACKEND_URL}/users/my-profile`,
+            "http://localhost:4001/api/users/my-profile",
             {
               withCredentials: true,
               headers: {
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
             }
           );
           console.log(data.user);
-          setProfile(data.user);
+          setProfile(data);
           setIsAuthenticated(true);
         }
       } catch (error) {
@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
-          `${BACKEND_URL}/blogs/all-blogs`,
+          "http://localhost:4001/api/blogs/all-blogs",
           { withCredentials: true }
         );
         console.log(data);

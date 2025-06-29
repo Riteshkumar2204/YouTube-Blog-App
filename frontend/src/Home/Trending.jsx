@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useAuth } from "../context/AuthProvider";
 import { Link } from "react-router-dom";
@@ -31,7 +30,7 @@ function Trending() {
       <h1 className=" text-2xl font-semibold mb-4">Trending</h1>
       <Carousel responsive={responsive}>
         {blogs && blogs.length > 0 ? (
-          blogs.slice(0, 12).map((element) => {
+          blogs.slice(0, 6).map((element) => {
             return (
               <div
                 key={element._id}
