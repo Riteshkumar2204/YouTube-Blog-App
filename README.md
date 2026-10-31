@@ -1,66 +1,165 @@
-# 🧾 AI-Video-Assistant 
+# 📝 YouTube-Blog-App
 
- AI Video Assistant is an AI-powered platform designed to analyze and understand video content. It converts YouTube videos and local media into transcripts, generates LLM-powered summaries, action items, key decisions, and open questions, and provides an interactive RAG-based Q&A system for querying video content.
+YouTube Blog App is a full-stack blogging platform built with the **MERN stack**. Users can explore blog content, while administrators can create, update, and delete blog posts. The app includes secure JWT-based authentication and role-based access control to manage user permissions.
 
-### 🔧 Features
+🚀 **Live Demo:** [https://youtube-blog-app.vercel.app/](https://youtube-blog-app.vercel.app/)
 
-- **Video Processing**
-  - Supports YouTube videos and local audio/video files.
-  - Converts video/audio into text using **OpenAI Whisper**.
-  - Handles long videos by processing audio in manageable chunks.
-  - Provides complete video transcripts for further analysis.
+---
 
-- **AI-Powered Insights**
-  - Generates video titles and concise summaries using **Mistral AI**.
-  - Extracts important **action items, key decisions, and open questions**.
-  - Converts raw transcripts into structured and meaningful insights.
+## 🔧 Features
 
-- **Intelligent Q&A**
-  - Allows users to ask questions about processed videos.
-  - Uses **RAG with LangChain and ChromaDB** for contextual information retrieval.
-  - Provides answers based on the actual video transcript.
+### 🔐 User Authentication
+- Secure authentication using JWT
+- Login and registration functionality
+- Cookie-based token handling for protected access
 
-## ⚙️ Local Setup
+### 🛡️ Role-Based Access Control
+- Separate **Admin** and **User** roles
+- Only authorized administrators can manage blog content
+- Protected routes to prevent unauthorized actions
 
-### 1. Clone the Repo
-git clone https://github.com/Riteshkumar2204/-AI-Video-Assistant.git
+### 📰 Blog Management
+- Admin can create, update, and delete blog posts
+- Users can browse and explore published content
+- Organized blog content management
 
-### 2. Environment Variables
-To run this project, you will need to add the following environment variables to your .env file
-```env
-MISTRAL_API_KEY=your_mistral_api_key
-WHISPER_MODEL=base
-SARVAM_API_KEY=your_sarvam_api_key
-SARVAM_STT_MODEL=saaras:v2.5
-```
+### ☁️ Cloud Integration
+- Cloudinary for image storage and management
+- MongoDB Atlas for cloud database storage
 
-### 3. Deployment
-
-#### Run Application
-
-```bash
-streamlit run app.py
-```
-
-
-## 🚀Live Demo
-https://aivideoassistance.streamlit.app/
-
+---
 
 ## 🛠️ Tech Stack
 
-- **Language:** Python
-- **Frontend:** Streamlit
-- **AI/ML:** OpenAI Whisper, Mistral AI
-- **RAG:** LangChain, ChromaDB
-- **Video/Audio Processing:** yt-dlp, FFmpeg, Pydub
-- **Embeddings:** Sentence Transformers
+| Category        | Technology                 |
+| --------------- | -------------------------- |
+| Language        | JavaScript                 |
+| Frontend        | React.js                   |
+| Backend         | Node.js, Express.js        |
+| Database        | MongoDB, Mongoose          |
+| Authentication  | JWT, Cookies               |
+| Cloud Storage   | Cloudinary                 |
+| API             | REST APIs                  |
+| Deployment      | Vercel, Render             |
+
+---
+
+## 📁 Project Structure
+
+```
+YouTube-Blog-App/
+├── backend/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── middleware/
+│   ├── config/
+│   └── server.js
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   └── package.json
+└── README.md
+```
+
+> Adjust folder names above to match your actual structure.
+
+---
+
+## ⚙️ Local Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Riteshkumar2204/YouTube-Blog-App.git
+cd YouTube-Blog-App
+```
+
+### 2. Environment Variables
+
+Create a `.env` file in the **backend** directory and add the following:
+
+```env
+PORT=your_port
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+```
+
+### 3. Install Dependencies
+
+Install dependencies for both the backend and frontend:
+
+```bash
+# Backend
+cd backend
+npm install
+
+# Frontend
+cd ../frontend
+npm install
+```
+
+### 4. Run the Application
+
+Start the backend and frontend in separate terminals:
+
+```bash
+# Backend
+cd backend
+npm start
+
+# Frontend
+cd frontend
+npm start
+```
+
+The frontend usually runs on `http://localhost:3000` and the backend on the port you set in `.env`.
+
+---
+
+## 🔌 API Overview
+
+> Update these routes to match your actual endpoints.
+
+| Method | Endpoint              | Description                | Access |
+| ------ | --------------------- | -------------------------- | ------ |
+| POST   | `/api/auth/register`  | Register a new user        | Public |
+| POST   | `/api/auth/login`     | Login and receive a token  | Public |
+| GET    | `/api/blogs`          | Get all blog posts         | Public |
+| GET    | `/api/blogs/:id`      | Get a single blog post     | Public |
+| POST   | `/api/blogs`          | Create a blog post         | Admin  |
+| PUT    | `/api/blogs/:id`      | Update a blog post         | Admin  |
+| DELETE | `/api/blogs/:id`      | Delete a blog post         | Admin  |
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "Add your feature"`
+4. Push to the branch: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+---
+
 ## 🔗 Links
 
-[![Portfolio](https://img.shields.io/badge/MY%20PORTFOLIO-000000?style=for-the-badge&logo=googlechrome&logoColor=white)](YOUR_PORTFOLIO_LINK)
+- **Live Demo:** [https://youtube-blog-app.vercel.app/](https://youtube-blog-app.vercel.app/)
+- **GitHub Repo:** [https://github.com/Riteshkumar2204/YouTube-Blog-App](https://github.com/Riteshkumar2204/YouTube-Blog-App)
 
-[![LinkedIn](https://img.shields.io/badge/LINKEDIN-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](YOUR_LINKEDIN_LINK)
+---
 
-[![GitHub](https://img.shields.io/badge/GITHUB-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Riteshkumar2204)
+## 👨‍💻 Author
 
-[![LeetCode](https://img.shields.io/badge/LEETCODE-FFA116?style=for-the-badge&logo=leetcode&logoColor=black)](https://leetcode.com/u/oNL20WwRDU/)
+**Ritesh Kumar**
+GitHub: [@Riteshkumar2204](https://github.com/Riteshkumar2204)
+
+---
+
+⭐ If you found this project helpful, consider giving it a star!
